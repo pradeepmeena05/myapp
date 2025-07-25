@@ -1,16 +1,22 @@
-# myapp
+# 🚀 MyApp - Flutter Web Application
 
-A new Flutter project.
+Welcome to **MyApp**, a modern Flutter web app built with a clean UI and powerful functionality.
 
-## Getting Started
+## 🌐 Live Demo
 
-This project is a starting point for a Flutter application.
+🔗 [Click here to view live app](https://pradeepmeena05.github.io/myapp/)
 
-A few resources to get you started if this is your first Flutter project:
+## 📦 Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- ⚡ Built with Flutter Web
+- 💻 Responsive UI (works on desktop & mobile)
+- 🎯 Hosted on GitHub Pages
+- 🔧 Easy to maintain and deploy
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
+- [GitHub Pages](https://pages.github.com/) for hosting
+
+
