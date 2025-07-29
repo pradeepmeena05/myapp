@@ -48,6 +48,15 @@ class _CardDataState extends State<CardData> {
       "link1": "https://github.com/pradeepmeena05/Flutter-Sorting-visualizer",
       "link2": "https://youtu.be/xD73pZ30CzE",
     },
+    {
+      "title": "Todo App",
+      "img": "todo.png",
+      "tech": "Flutter, Dart, Vscode",
+      "link1": "https://github.com/pradeepmeena05/flutter-Todo",
+      "link2": "https://youtube.com/shorts/_y7zJlMEFCQ",
+    },
+
+   
   ];
 
   @override
