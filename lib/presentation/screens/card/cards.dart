@@ -58,14 +58,14 @@ class _CardDataState extends State<CardData> {
 
      {
       "title": "Password Generator App",
-      "img": "sorting.png",
+      "img": "password.png",
       "tech": "Flutter, Dart, Vscode",
       "link1": "https://github.com/pradeepmeena05/Password-Generator",
       "link2": "https://www.youtube.com/shorts/tzI4BTy6DGo",
     },
     {
       "title": "FundRaise-Intern-Portal",
-      "img": "todo.png",
+      "img": "leaderboard.png",
       "tech": "Flutter, Dart, Vscode",
       "link1": "https://github.com/pradeepmeena05/-FundRaise-Intern-Portal",
       "link2": "https://www.youtube.com/shorts/CKX2dbiSmgA",
