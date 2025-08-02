@@ -1,49 +1,77 @@
 import 'package:flutter/material.dart';
 
-class HoverImage extends StatefulWidget {
-  final String imagePath;
-  final String label;
+class StaggeredSlideList extends StatefulWidget {
+  final List<Widget> children;
+  final Duration duration;
+  final Curve curve;
+  final Offset offset;
 
-  const HoverImage({required this.imagePath, required this.label, super.key});
+  const StaggeredSlideList({
+    super.key,
+    required this.children,
+    this.duration = const Duration(milliseconds: 1200),
+    this.curve = Curves.easeOut,
+    this.offset = const Offset(-1, 0),
+  });
 
   @override
-  State<HoverImage> createState() => _HoverImageState();
+  State<StaggeredSlideList> createState() => _StaggeredSlideListState();
 }
 
-class _HoverImageState extends State<HoverImage> {
-  bool _hover = false;
+class _StaggeredSlideListState extends State<StaggeredSlideList>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late List<Animation<Offset>> _animations;
+
+  @override
+  void initState() {
+    super.initState();
+    
+    _controller = AnimationController(vsync: this, duration: widget.duration);
+
+    final count = widget.children.length;
+
+    _animations = List.generate(count, (index) {
+      final start = index * 0.1;
+      final end = start + 0.4;
+
+      return Tween<Offset>(
+        begin: widget.offset,
+        end: Offset.zero,
+      ).animate(
+        CurvedAnimation(
+          parent: _controller,
+          curve: Interval(
+            start.clamp(0.0, 1.0),
+            end.clamp(0.0, 1.0),
+            curve: widget.curve,
+          ),
+        ),
+      );
+    });
+
+     Future.delayed(Duration(seconds: 5),(){
+      _controller.forward();
+     });_controller.forward();
+
+    
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _hover = true),
-      onExit: (_) => setState(() => _hover = false),
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
-        transform: Matrix4.identity()..scale(_hover ? 1.1 : 1.0),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Image.asset(
-              widget.imagePath,
-              width: 120,
-              height: 120,
-              fit: BoxFit.cover,
-            ),
-            if (_hover)
-              Container(
-                width: 120,
-                height: 120,
-                color: Colors.black.withOpacity(0.5),
-                alignment: Alignment.center,
-                child: Text(
-                  widget.label,
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-              ),
-          ],
-        ),
-      ),
+    return Column(
+      children: List.generate(widget.children.length, (index) {
+        return SlideTransition(
+          position: _animations[index],
+          child: widget.children[index],
+        );
+      }),
     );
   }
 }

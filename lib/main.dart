@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:packages/presentation/resources/animation.dart';
 import 'package:packages/presentation/resources/apptheme.dart';
 import 'package:packages/presentation/resources/themeCubit.dart';
 import 'package:packages/presentation/resources/themes.dart';
@@ -129,30 +130,33 @@ class HomePage extends StatelessWidget {
                 ),
               )
               : null,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 12.0,right: 12,bottom: 20),
-          child: Column(
-            children: [
-              const SizedBox(height: 50),
-              Container(key: home, child: Intro()),
-              const SizedBox(height: 60),
-              Container(key: about, child: Aboutme()),
+     body: SingleChildScrollView(
+  child: Padding(
+    padding: const EdgeInsets.only(left: 12.0, right: 12, bottom: 20),
+    child: StaggeredSlideList(
+      children: [
+        const SizedBox(height: 50),
+        Container(key: home, child: Intro()),
 
-              const SizedBox(height: 50),
-              Container(key: techstack, child: Mystack()),
+        const SizedBox(height: 60),
+        Container(key: about, child: Aboutme()),
 
-              const SizedBox(height: 50),
-              Container(key: project, child: CardData()),
+        const SizedBox(height: 50),
+        Container(key: techstack, child: Mystack()),
 
-              const SizedBox(height: 50),
-              Container(key: contact, child: CertificateCards()),
-              const SizedBox(height: 50,),
-               Container(key: certificate,child: Contact(),)
-            ],
-          ),
-        ),
-      ),
+        const SizedBox(height: 50),
+        Container(key: project, child: CardData()),
+
+        const SizedBox(height: 50),
+        Container(key: contact, child: CertificateCards()),
+
+        const SizedBox(height: 50),
+        Container(key: certificate, child: Contact()),
+      ],
+    ),
+  ),
+),
+
     );
   }
 
